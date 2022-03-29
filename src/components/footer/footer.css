@@ -1,0 +1,24 @@
+.footer-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.footer-container ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-container ul li {
+    display: inline-flex;
+
+}
+.footer-container a{
+    color: black;
+}
+.footer-container a:hover{
+    color: rgb(235, 247, 243);
+}

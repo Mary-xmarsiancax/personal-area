@@ -1,0 +1,40 @@
+.header-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.header-container .text {
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    color: rgb(67, 69, 68);
+    font-weight: bold;
+}
+
+.header-container .registration-text a {
+    text-decoration: none;
+}
+
+.header-container .registration-text .link:hover {
+    color: rgb(235, 247, 243);
+    text-decoration: underline rgb(235, 247, 243);
+}
+
+.header-container .registration-text {
+    display: inline-flex;
+    justify-content: space-around;
+    width: 20%;
+}
+
+.header-container .registration-text .link {
+    width: 100%;
+    display: inline-flex;
+
+    color: rgb(67, 69, 68);
+    font-weight: bold;
+    text-decoration: underline rgb(67, 69, 68);
+
+}
