@@ -14,11 +14,13 @@
 
 .footer-container ul li {
     display: inline-flex;
+    color: snow;
+}
 
+.footer-container a {
+    color: snow;
 }
-.footer-container a{
-    color: black;
-}
-.footer-container a:hover{
-    color: rgb(235, 247, 243);
+
+.footer-container a:hover {
+    color: rgb(33, 50, 133);
 }

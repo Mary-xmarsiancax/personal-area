@@ -10,7 +10,7 @@
     display: flex;
     width: 80%;
     justify-content: center;
-    color: rgb(67, 69, 68);
+    color: white;
     font-weight: bold;
 }
 
@@ -19,22 +19,21 @@
 }
 
 .header-container .registration-text .link:hover {
-    color: rgb(235, 247, 243);
-    text-decoration: underline rgb(235, 247, 243);
+    color: rgb(33, 50, 133);
+    text-decoration: rgb(33, 50, 133);
 }
 
 .header-container .registration-text {
     display: inline-flex;
     justify-content: space-around;
     width: 20%;
+    font-weight: bold;
 }
 
 .header-container .registration-text .link {
     width: 100%;
     display: inline-flex;
-
-    color: rgb(67, 69, 68);
-    font-weight: bold;
-    text-decoration: underline rgb(67, 69, 68);
+    color: #f3f3f3;
+    text-decoration: underline #f3f3f3;;
 
 }
