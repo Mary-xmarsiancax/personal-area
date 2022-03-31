@@ -8,10 +8,11 @@
 
 .header-container .text {
     display: flex;
-    width: 80%;
+    width: 60%;
     justify-content: center;
     color: white;
     font-weight: bold;
+    margin-left: 19%;
 }
 
 .header-container .registration-text a {
@@ -27,7 +28,7 @@
     display: inline-flex;
     justify-content: space-around;
     width: 20%;
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .header-container .registration-text .link {
@@ -35,5 +36,8 @@
     display: inline-flex;
     color: #f3f3f3;
     text-decoration: underline #f3f3f3;;
+}
 
+.header-container .divider {
+    color: white;
 }

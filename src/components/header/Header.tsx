@@ -8,16 +8,19 @@ const Header = () => {
                 ЛИЧНЫЙ КАБИНЕТ
             </div>
             <div className={"registration-text"}>
-            <span>
-                <NavLink to="/login" className={"link"}>
-                    ВОЙТИ
+                <span>
+                    <NavLink to="/login" className={"link"}>
+                        ВОЙТИ
                     </NavLink>
                 </span>
+                <span className={"divider"}>
+                /
+                </span>
                 <span>
-                     <NavLink to="/registration" className={"link"}>
-                         РЕГИСТРАЦИЯ
-                          </NavLink>
-                     </span>
+                    <NavLink to="/registration" className={"link"}>
+                             РЕГИСТРАЦИЯ
+                    </NavLink>
+                </span>
             </div>
 
 
