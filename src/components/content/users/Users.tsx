@@ -6,11 +6,32 @@ import {AppState} from "../../../store/redux-store";
 import {User} from "../../../services/api-types";
 import "./users.css"
 import {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField} from "@mui/material";
+import {useForm} from "react-hook-form";
 
-const Users = () => {
-    const [open, setOpen] = useState(false)
+const Users: React.FC = (): React.ReactElement => {
     let dispatch = useDispatch()
     const users = useSelector<AppState>((state) => state.usersStore.users) as Array<User>;
+    useEffect(() => {
+        dispatch(setUsers());
+    }, [])
+
+    const {register, handleSubmit} = useForm<User>()
+    const [open, setOpen] = useState(false)
+
+    const onAddUser = () => {
+        setOpen(true)
+    }
+
+    const handleClose = () => {
+
+        setOpen(false)
+    }
+
+    const onSubmit = handleSubmit((data) =>{
+        console.log(data)
+        setOpen(false)
+    } )
+
     const usersListEl = users.map((user) => {
         return (
             <tr key={user.id}>
@@ -22,17 +43,6 @@ const Users = () => {
         )
     })
 
-    useEffect(() => {
-        dispatch(setUsers());
-    }, [])
-
-    const onAddUser = () => {
-        setOpen(true)
-    }
-
-    const handleClose = () => {
-        setOpen(false)
-    }
 
     return (
         <div className={"users-wr"}>
@@ -56,53 +66,57 @@ const Users = () => {
                 </table>
             </div>
             <Dialog open={open} onClose={handleClose}>
+                <form onSubmit={onSubmit}>
                 <DialogTitle>Новый контакт</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
                         Информация о новом контакте
                     </DialogContentText>
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="surname"
-                        label="Фамилия"
-                        type="text"
-                        fullWidth
-                        variant="standard"
-                    />
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="name"
-                        label="Имя"
-                        type="text"
-                        fullWidth
-                        variant="standard"
-                    /><TextField
-                        autoFocus
-                        margin="dense"
-                        id="age"
-                        label="Возраст"
-                        type="number"
-                        fullWidth
-                        variant="standard"
-                    /><TextField
-                        autoFocus
-                        margin="dense"
-                        id="city"
-                        label="Родной город"
-                        type="text"
-                        fullWidth
-                        variant="standard"
-                    />
+
+                        <TextField {...register("surname")}
+                                   autoFocus
+                                   margin="dense"
+                                   id="surname"
+                                   label="Фамилия"
+                                   type="text"
+                                   fullWidth
+                                   variant="standard"
+                        />
+                        <TextField {...register("name")}
+                                   autoFocus
+                                   margin="dense"
+                                   id="name"
+                                   label="Имя"
+                                   type="text"
+                                   fullWidth
+                                   variant="standard"
+                        />
+                        <TextField {...register("age")}
+                                   autoFocus
+                                   margin="dense"
+                                   id="age"
+                                   label="Возраст"
+                                   type="number"
+                                   fullWidth
+                                   variant="standard"
+                        />
+                        <TextField {...register("city")}
+                                   autoFocus
+                                   margin="dense"
+                                   id="city"
+                                   label="Родной город"
+                                   type="text"
+                                   fullWidth
+                                   variant="standard"
+                        />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Отмена</Button>
-                    <Button onClick={handleClose}>Сохранить</Button>
+                    <Button type="submit" value="submit" onClick={onSubmit}>Сохранить</Button>
                 </DialogActions>
+                </form>
             </Dialog>
         </div>
-
     )
 }
 export default Users;

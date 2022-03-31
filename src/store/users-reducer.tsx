@@ -20,7 +20,6 @@ const usersReducer = (state = initialState, action: UsersActionsType) => {
             let copyUsers = [...state.users]
             copyUsers = action.users
             copyState.users = copyUsers
-            console.log(copyState);
             return copyState
         }
 

@@ -1,6 +1,8 @@
 import "./footer.css"
-const Footer =()=>{
-    return(
+import React from "react";
+
+const Footer: React.FC = (): React.ReactElement => {
+    return (
         <div className={"footer-container"}>
             <ul>
                 <li><b>КОНТАКТЫ</b></li>

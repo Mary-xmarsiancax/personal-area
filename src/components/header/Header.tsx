@@ -1,7 +1,8 @@
 import "./header.css"
 import {NavLink} from "react-router-dom";
+import React from "react";
 
-const Header = () => {
+const Header:React.FC = ():React.ReactElement => {
     return (
         <div className={"header-container"}>
             <div className={"text"}>
