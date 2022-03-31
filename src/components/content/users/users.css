@@ -8,7 +8,7 @@
 .users-wr .users-buttons {
     width: 100%;
     display: flex;
-    justify-content:flex-end;
+    justify-content: flex-end;
 }
 
 .users-wr .users-buttons button {
@@ -75,6 +75,11 @@ td, th {
 
 tbody tr:nth-child(even) {
     background-color: rgba(255, 255, 255, .2);
+}
+
+.selected {
+    background-color: rgba(16, 18, 41, 0.8) !important;
+    color: white;
 }
 
 tbody tr:hover td {

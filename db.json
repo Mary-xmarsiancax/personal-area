@@ -1,27 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Mary",
-      "surname": "Barochkina",
-      "age": 34,
-      "city": "N.Novgorod"
-    },
-    {
-      "id": 2,
-      "name": "Max",
-      "surname": "Barochkin",
-      "age": 32,
-      "city": "N.Novgorod"
-    },
-    {
-      "id": 3,
-      "name": "Jim",
-      "surname": "Kerry",
-      "age": 60,
-      "city": "Newmarket"
-    },
-    {
       "id": 4,
       "name": "Brad",
       "surname": "Pitt",
@@ -50,11 +29,18 @@
       "city": "Newmarket"
     },
     {
-      "id": 8,
-      "name": "Brad",
-      "surname": "Pitt",
-      "age": 32,
-      "city": "Oklahoma"
+      "surname": "",
+      "name": "",
+      "age": "",
+      "city": "",
+      "id": 10
+    },
+    {
+      "surname": "Д\"Арк",
+      "name": "Жанна",
+      "age": "350",
+      "city": "Париж",
+      "id": 11
     }
   ]
 }

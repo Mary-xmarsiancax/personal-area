@@ -1,7 +1,7 @@
 import * as React from "react";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {setUsers} from "../../../store/users-reducer";
+import {addUser, setSelectedId, setUsers, userDelete} from "../../../store/users-reducer";
 import {AppState} from "../../../store/redux-store";
 import {User} from "../../../services/api-types";
 import "./users.css"
@@ -11,6 +11,8 @@ import {useForm} from "react-hook-form";
 const Users: React.FC = (): React.ReactElement => {
     let dispatch = useDispatch()
     const users = useSelector<AppState>((state) => state.usersStore.users) as Array<User>;
+    const selectedId = useSelector<AppState>((state) => state.usersStore.selectedId) as number;
+
     useEffect(() => {
         dispatch(setUsers());
     }, [])
@@ -23,18 +25,25 @@ const Users: React.FC = (): React.ReactElement => {
     }
 
     const handleClose = () => {
-
         setOpen(false)
     }
 
-    const onSubmit = handleSubmit((data) =>{
-        console.log(data)
+    const onSubmit = handleSubmit((data) => {
+        dispatch(addUser(data))
         setOpen(false)
-    } )
+    })
+
+    const onSelect = (id: number) => {
+        dispatch(setSelectedId(id))
+    }
+
+    const onDeleteUser = () => {
+        dispatch(userDelete(selectedId))
+    }
 
     const usersListEl = users.map((user) => {
         return (
-            <tr key={user.id}>
+            <tr key={user.id} onClick={() => onSelect(user.id)} className={selectedId === user.id ? "selected" : ""}>
                 <td className={"column1"}>{user.surname}</td>
                 <td className={"column2"}>{user.name}</td>
                 <td className={"column3"}>{user.age}</td>
@@ -48,7 +57,7 @@ const Users: React.FC = (): React.ReactElement => {
         <div className={"users-wr"}>
             <div className={"users-buttons"}>
                 <button onClick={onAddUser}>Добавить</button>
-                <button>Удалить</button>
+                <button onClick={onDeleteUser}>Удалить</button>
             </div>
             <div className={"table-wr"}>
                 <table>
@@ -67,11 +76,11 @@ const Users: React.FC = (): React.ReactElement => {
             </div>
             <Dialog open={open} onClose={handleClose}>
                 <form onSubmit={onSubmit}>
-                <DialogTitle>Новый контакт</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        Информация о новом контакте
-                    </DialogContentText>
+                    <DialogTitle>Новый контакт</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            Информация о новом контакте
+                        </DialogContentText>
 
                         <TextField {...register("surname")}
                                    autoFocus
@@ -109,11 +118,11 @@ const Users: React.FC = (): React.ReactElement => {
                                    fullWidth
                                    variant="standard"
                         />
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose}>Отмена</Button>
-                    <Button type="submit" value="submit" onClick={onSubmit}>Сохранить</Button>
-                </DialogActions>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleClose}>Отмена</Button>
+                        <Button type="submit" value="submit" onClick={onSubmit}>Сохранить</Button>
+                    </DialogActions>
                 </form>
             </Dialog>
         </div>
