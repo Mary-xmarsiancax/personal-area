@@ -54,7 +54,16 @@ export const addUser = (user: User) => (dispatch: any) => {
                     dispatch(actions.setUsers(resp.data))
                 })
         })
+}
 
+export const updateUser = (user: User) => (dispatch: any) => {
+    usersAPI.updateUser(user)
+        .then(resp => {
+            usersAPI.getUsers()
+                .then((resp) => {
+                    dispatch(actions.setUsers(resp.data))
+                })
+        })
 }
 
 export const setSelectedId = (id: number) => (dispatch: any) => {

@@ -53,6 +53,9 @@ export const usersAPI = {
     setUser(user: User): Promise<AxiosResponse<User>> {
         return axios.post(` http://localhost:3000/users`, user)
     },
+    updateUser(user: User): Promise<AxiosResponse<User>> {
+        return axios.put(` http://localhost:3000/users/${user.id}`, user)
+    },
     deleteUser(id: number): Promise<AxiosResponse<User>> {
         return axios.delete(` http://localhost:3000/users/${id}`)
     }

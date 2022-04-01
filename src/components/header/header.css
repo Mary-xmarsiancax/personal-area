@@ -58,10 +58,10 @@
     font-family: 'Bree Serif', serif;
     font-weight: 300;
     font-size: 18px;
-    color: rgb(16, 18, 41);
+    color: white;
     text-shadow: 0px 1px 0 rgba(0, 0, 0, 0.25);
 
-    background: white;
+    background: rgb(16, 18, 41);
     border: 1px solid #46b3d3;
     border-radius: 5px;
     cursor: pointer;
@@ -78,4 +78,13 @@
     -moz-box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
     -webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
     color: white;
+}
+.registration-text .username{
+    display: flex;
+    align-items: center;
+}
+.registration-text img{
+    height: 10%;
+    width: 10%;
+    margin: auto 0 auto 0;
 }

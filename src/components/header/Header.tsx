@@ -4,6 +4,7 @@ import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AppState} from "../../store/redux-store";
 import {setUsersName} from "../../store/auth-reducer";
+import avatar from "../../img/avatar.png"
 
 const Header: React.FC = (): React.ReactElement => {
     const username = useSelector<AppState>((state) => state.authStore.username) as string;
@@ -36,7 +37,8 @@ const Header: React.FC = (): React.ReactElement => {
                 </div>
                 :
                 <div className={"registration-text"}>
-                    <div className={"username"}>Имя пользователя: {username}</div>
+                    <img src={avatar} alt="avatar"/>
+                    <div className={"username"}> {username}</div>
                     <button className={"exit-button"} onClick={currentUserNameDelete}>ВЫЙТИ</button>
                 </div>
 

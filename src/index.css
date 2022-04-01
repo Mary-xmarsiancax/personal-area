@@ -20,3 +20,7 @@ code {
     display: flex;
     justify-content: center;
 }
+
+.relative {
+    position: relative;
+}
