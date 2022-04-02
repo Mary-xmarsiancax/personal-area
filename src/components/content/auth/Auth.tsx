@@ -1,17 +1,19 @@
 import "./auth.css"
 import {NavLink} from "react-router-dom";
-import React from "react";
+import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import {AuthData} from "../../../services/api-types";
 import {authAPI} from "../../../services/Api";
 import {useDispatch} from "react-redux";
 import {setUsersName} from "../../../store/auth-reducer";
+import {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField} from "@mui/material";
 
 type AuthProps = { registration: boolean }
 
 const Auth: React.FC<AuthProps> = (props): React.ReactElement => {
     let dispatch = useDispatch()
     const {register, handleSubmit} = useForm<AuthData>()
+    const [message, setMessage] = useState("")
 
     const onSubmit = handleSubmit((data: AuthData) => {
             if (props.registration) {
@@ -21,11 +23,12 @@ const Auth: React.FC<AuthProps> = (props): React.ReactElement => {
                 const userIsRegisterName = authAPI.login(data)
                 if (userIsRegisterName) {
                     dispatch(setUsersName(userIsRegisterName))
+                } else {
+                    setMessage("Неверные имя пользователя или пароль")
                 }
             }
         }
     )
-
 
     return (
         <div>
@@ -74,6 +77,14 @@ const Auth: React.FC<AuthProps> = (props): React.ReactElement => {
                     </form>
                 </div>
             }
+            <Dialog open={!!message} onClose={() => setMessage("")}>
+                <form onSubmit={onSubmit}>
+                    <DialogTitle>{message}</DialogTitle>
+                    <DialogActions>
+                        <Button onClick={() => setMessage("")}>Ок</Button>
+                    </DialogActions>
+                </form>
+            </Dialog>
         </div>
     )
 }
