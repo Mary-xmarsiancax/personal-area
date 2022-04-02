@@ -27,7 +27,6 @@ export const UserFormDialog: React.FC<UserFormDialogProps> = ({
 
     const onSubmit = handleSubmit((data) => {
         if (user) {
-            console.log(data);
             dispatch(updateUser(data))
         } else {
             dispatch(addUser(data))

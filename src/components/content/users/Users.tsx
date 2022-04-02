@@ -39,23 +39,13 @@ const Users: React.FC = (): React.ReactElement => {
         dispatch(userDelete(selectedId))
     }
 
-    const editUserFind = (id: number | null): User | undefined => {
-        if (id) {
-            return users.find((user) => user.id === id)
-        } else {
-            return undefined
-        }
-    }
-
     const onChangeTasksInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputsText(e.target.value)
     }
 
-    const onSearchUser = (text: string) => {
-
-    }
-
-    const usersListEl = users.map((user) => {
+    const usersListEl = users.filter((user) => {
+        return user.surname.toLowerCase().includes(inputsText.toLowerCase()) || user.name.toLowerCase().includes(inputsText.toLowerCase())
+    }).map((user) => {
         return (
             <tr key={user.id} onClick={() => onSelect(user.id)} className={selectedId === user.id ? "selected" : ""}>
                 <td>{user.surname}</td>
@@ -83,7 +73,7 @@ const Users: React.FC = (): React.ReactElement => {
                                    value={inputsText}
                         />
                         <Divider sx={{height: 28, m: 0.5}} orientation="vertical"/>
-                        <SearchIcon onClick={() => onSearchUser(inputsText)}/>
+                        <SearchIcon/>
                     </Paper>
                 </div>
 
