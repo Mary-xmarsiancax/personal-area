@@ -1,12 +1,13 @@
 import {User} from "../services/api-types";
 import {InferActionsTypes} from "./redux-store";
 import {usersAPI} from "../services/Api";
+import {ThunkDispatch} from "redux-thunk";
+import {AnyAction} from "redux";
 
 export const actions = {
     setUsers: (users: Array<User>) => ({type: "SET_USERS", users} as const),
     setSelectedId: (id: number) => ({type: "SET_SELECTED_ID", id} as const)
 }
-
 
 type UsersActionsType = InferActionsTypes<typeof actions>
 type Selected = { selectedId: number | null }
@@ -39,14 +40,14 @@ const usersReducer = (state = initialState, action: UsersActionsType) => {
     }
 }
 //thunks
-export const setUsers = () => (dispatch: any) => {
+export const setUsers = () => (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
     usersAPI.getUsers()
         .then((resp) => {
             dispatch(actions.setUsers(resp.data))
         })
 
 }
-export const addUser = (user: User) => (dispatch: any) => {
+export const addUser = (user: User) => (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
     usersAPI.setUser(user)
         .then(resp => {
             usersAPI.getUsers()
@@ -56,7 +57,7 @@ export const addUser = (user: User) => (dispatch: any) => {
         })
 }
 
-export const updateUser = (user: User) => (dispatch: any) => {
+export const updateUser = (user: User) => (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
     usersAPI.updateUser(user)
         .then(resp => {
             usersAPI.getUsers()
@@ -66,10 +67,10 @@ export const updateUser = (user: User) => (dispatch: any) => {
         })
 }
 
-export const setSelectedId = (id: number) => (dispatch: any) => {
+export const setSelectedId = (id: number) => (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
     dispatch(actions.setSelectedId(id))
 }
-export const userDelete = (id: number) => (dispatch: any) => {
+export const userDelete = (id: number) => (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
     usersAPI.deleteUser(id)
         .then(resp => {
             usersAPI.getUsers()

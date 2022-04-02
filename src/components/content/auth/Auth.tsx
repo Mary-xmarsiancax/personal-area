@@ -6,7 +6,7 @@ import {AuthData} from "../../../services/api-types";
 import {authAPI} from "../../../services/Api";
 import {useDispatch} from "react-redux";
 import {setUsersName} from "../../../store/auth-reducer";
-import {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField} from "@mui/material";
+import {Button, Dialog, DialogActions, DialogTitle} from "@mui/material";
 
 type AuthProps = { registration: boolean }
 
@@ -16,17 +16,21 @@ const Auth: React.FC<AuthProps> = (props): React.ReactElement => {
     const [message, setMessage] = useState("")
 
     const onSubmit = handleSubmit((data: AuthData) => {
-            if (props.registration) {
-                const newUserNameRegister = authAPI.registration(data)
-                dispatch(setUsersName(newUserNameRegister))
-            } else {
-                const userIsRegisterName = authAPI.login(data)
-                if (userIsRegisterName) {
-                    dispatch(setUsersName(userIsRegisterName))
+            if (data.passwordRepeat) {
+                if (data.password === data.passwordRepeat) {
+                    const newUserNameRegister = authAPI.registration(data)
+                    dispatch(setUsersName(newUserNameRegister))
                 } else {
-                    setMessage("Неверные имя пользователя или пароль")
+                    setMessage("Пароли не совпадают")
                 }
-            }
+            } else {
+                    const userIsRegisterName = authAPI.login(data)
+                    if (userIsRegisterName) {
+                        dispatch(setUsersName(userIsRegisterName))
+                    } else {
+                        setMessage("Неверные имя пользователя или пароль")
+                    }
+                }
         }
     )
 
@@ -45,7 +49,8 @@ const Auth: React.FC<AuthProps> = (props): React.ReactElement => {
                                    placeholder="логин"/>
                             <input {...register("password")} name="password" type="password" className="input password"
                                    placeholder="пароль"/>
-                            <input name="passwordRepeat" type="password" className="input password"
+                            <input {...register("passwordRepeat")} name="passwordRepeat" type="password"
+                                   className="input password"
                                    placeholder="пароль"/>
                         </div>
                         <div className="footer content-center">

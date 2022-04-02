@@ -22,4 +22,5 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 export default store;
 
 type PropertiesType<T> = T extends { [key: string]: infer u } ? u : never
-export type InferActionsTypes<T extends { [key: string]: (...arg: any[]) => any }> = ReturnType<PropertiesType<T>>
+export type InferActionsTypes<T extends { [key: string]: (...arg: any[]) => any }> = ReturnType<PropertiesType<T>>//без any в данном случае
+// сделать не получилось.Такую типизацию redux-store я подсмотрела на видеокурсе по react-redux

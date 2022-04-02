@@ -1,9 +1,9 @@
 import {InferActionsTypes} from "./redux-store";
+import {ThunkDispatch} from "redux-thunk";
+import {AnyAction} from "redux";
 
 export const actions = {
-    setUsersName: (name: string) => ({type: "SET_USERS_NAME", name} as const),
-    // setRegistrationErrorsText: (text: string) => ({type: "SET_REGISTRATION_ERRORS_TEXT", text} as const),
-    // setLoading: (loadingStatus: boolean) => ({type: "SET_LOADING", loadingStatus} as const),
+    setUsersName: (name: string) => ({type: "SET_USERS_NAME", name} as const)
 }
 type AuthActionsType = InferActionsTypes<typeof actions>
 
@@ -31,16 +31,14 @@ const authReducer = (state = initialState, action: AuthActionsType) => {
             copyState.username = action.name
             return copyState
         }
-
         default:
             return state;
     }
-
 }
 
 //thunks
 
-export const setUsersName = (name: string) => (dispatch: any) => {
+export const setUsersName = (name: string) => (dispatch: ThunkDispatch<{}, {}, AnyAction>) => {
     dispatch(actions.setUsersName(name))
     localStorage.setItem("currentUserName", name.toString())
 }

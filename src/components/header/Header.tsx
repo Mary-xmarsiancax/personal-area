@@ -1,6 +1,6 @@
 import "./header.css"
 import {NavLink} from "react-router-dom";
-import React, {useEffect} from "react";
+import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {AppState} from "../../store/redux-store";
 import {setUsersName} from "../../store/auth-reducer";
@@ -41,7 +41,6 @@ const Header: React.FC = (): React.ReactElement => {
                     <div className={"username"}> {username}</div>
                     <button className={"exit-button"} onClick={currentUserNameDelete}>ВЫЙТИ</button>
                 </div>
-
             }
         </div>
     )

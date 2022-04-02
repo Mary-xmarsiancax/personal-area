@@ -6,18 +6,9 @@ export type User = {
     id: number
 }
 
-export type ResponseAuthData = {
-    id: number | null,
-    username: string
-}
-
 export type AuthData = {
     userName: string,
-    password: string
+    password: string,
+    passwordRepeat: string
 }
 
-// export type UserResponseData = {
-//     id: number,
-//     username: string,
-//     token: string
-// }
