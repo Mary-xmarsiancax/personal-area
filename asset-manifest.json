@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "//mary-xmarsiancax.github.io/personal-area/static/css/main.61caa4fd.css",
+    "main.js": "//mary-xmarsiancax.github.io/personal-area/static/js/main.ad6686a3.js",
+    "static/js/787.94218293.chunk.js": "//mary-xmarsiancax.github.io/personal-area/static/js/787.94218293.chunk.js",
+    "index.html": "//mary-xmarsiancax.github.io/personal-area/index.html",
+    "main.61caa4fd.css.map": "//mary-xmarsiancax.github.io/personal-area/static/css/main.61caa4fd.css.map",
+    "main.ad6686a3.js.map": "//mary-xmarsiancax.github.io/personal-area/static/js/main.ad6686a3.js.map",
+    "787.94218293.chunk.js.map": "//mary-xmarsiancax.github.io/personal-area/static/js/787.94218293.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.61caa4fd.css",
+    "static/js/main.ad6686a3.js"
+  ]
+}
